@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views import View
-from .models import User
+from .models import Profile
 
 class HomeView (View):
     def get(self, request):
@@ -16,7 +16,7 @@ class HomeView (View):
         email = request.POST.get('email', '')
         
         # Guardar en base de datos
-        user_entry = User(full_name=full_name, company_name=company_name, phone=phone, email=email)
-        user_entry.save()
+        profile_entry = Profile(full_name=full_name, company_name=company_name, phone=phone, email=email)
+        profile_entry.save()
         
         return redirect('home')
